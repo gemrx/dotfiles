@@ -1,0 +1,20 @@
+configuration {
+  modes: "window,drun,run";
+  font: "Roboto Medium 13";
+  display-drun: "Apps:";
+  display-window: "Windows:";
+  drun-display-format: "{icon} {name}";
+  show-icons: true;
+  icon-theme: "Fluent Dark";
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "/home/gemr/.config/rofi/theme.rasi"
