@@ -21,6 +21,9 @@ exec --no-startup-id nm-applet
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Start Insync
+exec --no-startup-id insync start
+
 # Nitrogen
 exec --no-startup-id nitrogen --restore
 
@@ -43,7 +46,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 ################################################################################
 
 # Switch between keyboard layouts
-exec --no-startup-id "setxkbmap -layout us,latam -option grp:alt_shift_toggle"
+bindsym Alt+Shift exec --no-startup-id setxkbmap -layout us,latam
+
+# Take screenshots with flameshot
+bindsym Print exec --no-startup-id flameshot full
+bindsym $mod+Print exec --no-startup-id flameshot gui
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -102,8 +109,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+s layout stacking (disabled)
+# bindsym $mod+w layout tabbed (disabled)
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -234,13 +241,22 @@ client.background       #ffffff
 #                                   RULES                                      #
 ################################################################################
 
-default_border pixel 2
+# Include borders for all applications
+for_window [class="^.*"] border pixel 2
+
+# Hide borders on workspaces with only one window visible
 hide_edge_borders smart
 
+# Gaps size
 gaps inner 5
 gaps outer 5
 
-#smart_gaps off
+# smart gaps
 smart_gaps on
 
+# Open certain apps in floating mode by default
+for_window [class="Pavucontrol"] floating enable, resize set 650 400, move position center
+for_window [class="Lxappearance"] floating enable, resize set 720 640, move position center  
+for_window [class="qt5ct"] floating enable, resize set 720 640, move position center
+for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
 
