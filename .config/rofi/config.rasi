@@ -1,11 +1,11 @@
 configuration {
   modes: "window,drun,run";
-  font: "Roboto Medium 13";
+  font: "Roboto Medium 12";
   display-drun: "Apps:";
   display-window: "Windows:";
   drun-display-format: "{icon} {name}";
   show-icons: true;
-  icon-theme: "Fluent Dark";
+  icon-theme: "kora";
 
   timeout {
       action: "kb-cancel";
@@ -17,4 +17,4 @@ configuration {
   }
 }
 
-@theme "/home/gemr/.config/rofi/theme.rasi"
+@theme "/home/gemr/.config/rofi/OneDark.rasi"

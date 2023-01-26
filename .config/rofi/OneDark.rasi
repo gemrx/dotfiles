@@ -5,7 +5,10 @@
   fg: #FFFFFF;
   fg-alt: #828791;
 
-  background-color: @bg;
+  /* accent-color: #5C6370; */
+  accent-color: #2D333B;
+
+  background-color: transparent;
   
   border: 0;
   margin: 0;
@@ -14,9 +17,9 @@
 }
 
 window {
-  width: 30%;
-  border: 2;
-  border-color: #61afef;
+  width: 35%;
+  /* border: 2;
+  border-color: #3477ad; */
 }
 
 element {
@@ -25,17 +28,20 @@ element {
 }
 
 element selected {
+  background-color: @accent-color;
   text-color: @fg;
+  /* border-radius: 15px; */
 }
 
 element-text {
   text-color: inherit;
   vertical-align: 0.5;
+  highlight: none;
 }
 
 element-icon {
   size: 25;
-  padding: 0 10 0 0;
+  padding: 0 10 0 10;
 }
 
 entry {

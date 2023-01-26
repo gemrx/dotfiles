@@ -18,14 +18,17 @@ exec_always --no-startup-id picom
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Polybar
+# Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start Insync
-exec --no-startup-id insync start
+exec_always --no-startup-id killall insync; insync start
 
-# Nitrogen
+# Start Nitrogen
 exec --no-startup-id nitrogen --restore
+
+# Disable mouse
+exec_always --no-startup-id "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -46,11 +49,21 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 ################################################################################
 
 # Switch between keyboard layouts
-bindsym Alt+Shift exec --no-startup-id setxkbmap -layout us,latam
+exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
 
 # Take screenshots with flameshot
 bindsym Print exec --no-startup-id flameshot full
 bindsym $mod+Print exec --no-startup-id flameshot gui
+
+# Toogle gaps on/off
+ set $mode_gaps Toggle gaps: (1) on (2) off
+ bindsym $mod+g mode "$mode_gaps"
+ mode "$mode_gaps" {
+     bindsym 1 mode "default", gaps inner all set 3, gaps outer all set 3
+     bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -66,8 +79,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -s set 5%-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+# start a terminal in tiled mode
+bindsym $mod+Return exec --no-startup-id alacritty -t 'alacritty-tiled'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -209,7 +222,7 @@ bindsym $mod+r mode "resize"
 ################################################################################
 
 # class                 border  bground text    indicator child_border
-client.focused          #61afef #61afef #1a1826 #61afef   #61afef
+client.focused          #4c7899 #3477ad #ffffff #3477ad   #3477ad
 client.focused_inactive #abb2bf #5f676a #ffffff #abb2bf   #abb2bf
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #cc241d #900000 #ffffff #cc241d   #cc241d
@@ -248,15 +261,20 @@ for_window [class="^.*"] border pixel 2
 hide_edge_borders smart
 
 # Gaps size
-gaps inner 5
-gaps outer 5
+gaps inner 0
+gaps outer 0
 
 # smart gaps
 smart_gaps on
 
 # Open certain apps in floating mode by default
+for_window [title="alacritty-tiled"] floating disabled
+for_window [class= "Alacritty" title="Alacritty"] floating enable, resize set 800 600, move position center
 for_window [class="Pavucontrol"] floating enable, resize set 650 400, move position center
+for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
+for_window [class="Blueberry.py"] floating enable, resize set 646 442, move position center
 for_window [class="Lxappearance"] floating enable, resize set 720 640, move position center  
 for_window [class="qt5ct"] floating enable, resize set 720 640, move position center
-for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
+for_window [class="Setroubleshoot"] floating enable, resize set 750 226, move position center
+
 
