@@ -18,11 +18,12 @@ exec_always --no-startup-id picom
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Start Insync
+exec_always --no-startup-id killall insync; insync start
+
 # Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Start Insync
-exec_always --no-startup-id killall insync; insync start
 
 # Start Nitrogen
 exec --no-startup-id nitrogen --restore
@@ -39,7 +40,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c abb2bf --nofork
 
 
 
@@ -50,6 +51,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Switch between keyboard layouts
 exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
+
+# Lock session
+bindsym $mod+Escape exec --no-startup-id i3lock -c abb2bf
 
 # Take screenshots with flameshot
 bindsym Print exec --no-startup-id flameshot full
@@ -79,8 +83,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -s set 5%-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal in tiled mode
-bindsym $mod+Return exec --no-startup-id alacritty -t 'alacritty-tiled'
+# Execute Alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# Start Helper Alacritty
+bindsym $mod+Shift+backslash exec --no-startup-id "pgrep -f '^alacritty --class HelperAlacritty,HelperAlacritty' || alacritty --class HelperAlacritty,HelperAlacritty"
+bindsym $mod+backslash [class="HelperAlacritty"] scratchpad show; move position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -268,8 +276,7 @@ gaps outer 0
 smart_gaps on
 
 # Open certain apps in floating mode by default
-for_window [title="alacritty-tiled"] floating disabled
-for_window [class= "Alacritty" title="Alacritty"] floating enable, resize set 800 600, move position center
+for_window [class="HelperAlacritty"] floating enable, resize set 800 600, move scratchpad
 for_window [class="Pavucontrol"] floating enable, resize set 650 400, move position center
 for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
 for_window [class="Blueberry.py"] floating enable, resize set 646 442, move position center
