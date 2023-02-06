@@ -11,6 +11,9 @@ font pango:Roboto Medium 11
 #                                   START APPLICATIONS                         #
 ################################################################################
 
+# Start Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Sart picom
 exec_always --no-startup-id picom 
 
@@ -19,14 +22,15 @@ exec_always --no-startup-id picom
 exec --no-startup-id nm-applet
 
 # Start Insync
-exec_always --no-startup-id killall insync; insync start
+# exec_always --no-startup-id killall insync; insync start
+exec --no-startup-id insync
 
-# Start Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-
-# Start Nitrogen
+# Start Nitrogen for desktop wallpaper
 exec --no-startup-id nitrogen --restore
+
+# Set the background for betterlockscreen 
+exec --no-startup-id source ~/.fehbg
+
 
 # Disable mouse
 exec_always --no-startup-id "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1"
@@ -40,7 +44,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c abb2bf --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c abb2bf --nofork
 
 
 
@@ -53,7 +57,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c abb2bf --nofork
 exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
 
 # Lock session
-bindsym $mod+Escape exec --no-startup-id i3lock -c abb2bf
+bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l
 
 # Take screenshots with flameshot
 bindsym Print exec --no-startup-id flameshot full
@@ -283,5 +287,6 @@ for_window [class="Blueberry.py"] floating enable, resize set 646 442, move posi
 for_window [class="Lxappearance"] floating enable, resize set 720 640, move position center  
 for_window [class="qt5ct"] floating enable, resize set 720 640, move position center
 for_window [class="Setroubleshoot"] floating enable, resize set 750 226, move position center
+for_window [class="gnome-calendar"] floating enable, resize set 810 600, move position center
 
 
