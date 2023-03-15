@@ -11,28 +11,28 @@ font pango:Roboto Medium 11
 #                                   START APPLICATIONS                         #
 ################################################################################
 
-# Start Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Sart picom
-exec_always --no-startup-id picom 
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# NetworkManager nm-applet
 exec --no-startup-id nm-applet
 
-# Start Insync
-# exec_always --no-startup-id killall insync; insync start
+# Insync
 exec --no-startup-id insync
 
-# Start Nitrogen for desktop wallpaper
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Autotiling
+exec_always --no-startup-id autotiling.py
+
+# Picom
+exec_always --no-startup-id picom 
+
+# Nitrogen
 exec --no-startup-id nitrogen --restore
 
 # Set the background for betterlockscreen 
 exec --no-startup-id source ~/.fehbg
 
-
-# Disable mouse
+# Disable mouse acceleration
 exec_always --no-startup-id "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1"
 
 # Start XDG autostart .desktop files using dex. See also
@@ -62,16 +62,6 @@ bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l
 # Take screenshots with flameshot
 bindsym Print exec --no-startup-id flameshot full
 bindsym $mod+Print exec --no-startup-id flameshot gui
-
-# Toogle gaps on/off
- set $mode_gaps Toggle gaps: (1) on (2) off
- bindsym $mod+g mode "$mode_gaps"
- mode "$mode_gaps" {
-     bindsym 1 mode "default", gaps inner all set 3, gaps outer all set 3
-     bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
-     bindsym Return mode "default"
-     bindsym Escape mode "default"
-}
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -273,8 +263,9 @@ for_window [class="^.*"] border pixel 2
 hide_edge_borders smart
 
 # Gaps size
+# 0 - 3  
 gaps inner 0
-gaps outer 0
+gaps outer 0 
 
 # smart gaps
 smart_gaps on
