@@ -1,21 +1,24 @@
-################################################################################
-#                                   GENERAL DEFINITIONS                        #
-################################################################################
+# --------> GENERAL <--------
 
+# theme
+include $HOME/.config/i3/themes/onedark.conf
+
+# mod key
 set $mod Mod4
+
+# font
 font pango:Roboto Medium 11
 
 
 
-################################################################################
-#                                   START APPLICATIONS                         #
-################################################################################
+
+# --------> START APPLICATIONS <--------
 
 # NetworkManager nm-applet
 exec --no-startup-id nm-applet
 
 # Insync
-exec --no-startup-id insync
+exec --no-startup-id insync start
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -39,22 +42,13 @@ exec_always --no-startup-id "xinput --set-prop 11 'libinput Accel Profile Enable
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c abb2bf --nofork
 
 
 
-
-################################################################################
-#                                   KEYBINDINGS                                #
-################################################################################
+# --------> KEYBINDINGS <--------
 
 # Switch between keyboard layouts
-exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
+# exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
 
 # Lock session
 bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l
@@ -80,15 +74,18 @@ floating_modifier $mod
 # Execute Alacritty
 bindsym $mod+Return exec --no-startup-id alacritty
 
-# Start Helper Alacritty
-bindsym $mod+Shift+backslash exec --no-startup-id "pgrep -f '^alacritty --class HelperAlacritty,HelperAlacritty' || alacritty --class HelperAlacritty,HelperAlacritty"
-bindsym $mod+backslash [class="HelperAlacritty"] scratchpad show; move position center
+# Start Dropdown Alacritty if does not exist
+bindsym $mod+Shift+backslash exec --no-startup-id "pgrep -f '^alacritty --class Dropdown,Dropdown' || alacritty --class Dropdown,Dropdown"
+bindsym $mod+backslash [class="Dropdown"] scratchpad show; move position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
+# start rofi drun
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# start rofi window
+bindsym $mod+Tab exec --no-startup-id "rofi -show window -theme-str 'window {width: 50%;}'"
 
 # change focus
 bindsym $mod+j focus left
@@ -142,9 +139,8 @@ bindsym $mod+a focus parent
 
 
 
-################################################################################
-#                                   WORKSPACES                                 #
-################################################################################
+
+# --------> WORKSPACES <--------
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -219,42 +215,8 @@ bindsym $mod+r mode "resize"
 
 
 
-################################################################################
-#                                   THEME & i3BAR                                #
-################################################################################
 
-# class                 border  bground text    indicator child_border
-client.focused          #4c7899 #3477ad #ffffff #3477ad   #3477ad
-client.focused_inactive #abb2bf #5f676a #ffffff #abb2bf   #abb2bf
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #cc241d #900000 #ffffff #cc241d   #cc241d
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#   colors {
-#     background #000000
-#     statusline #FFFFFF
-#     separator  #666666
-
-#     focused_workspace  #83CAFA #51A2DA #FFFFFF
-#     active_workspace   #3C6EB4 #294172 #FFFFFF
-#     inactive_workspace #8C8C8C #4C4C4C #888888
-#     urgent_workspace   #EC69A0 #DB3279 #FFFFFF
-#     binding_mode       #b691d3 #A07CBC #FFFFFF
-#   }
-#   status_command i3status
-# }
-
-
-
-################################################################################
-#                                   RULES                                      #
-################################################################################
+# --------> RULES <--------
 
 # Include borders for all applications
 for_window [class="^.*"] border pixel 2
@@ -271,7 +233,7 @@ gaps outer 0
 smart_gaps on
 
 # Open certain apps in floating mode by default
-for_window [class="HelperAlacritty"] floating enable, resize set 800 600, move scratchpad
+for_window [class="Dropdown"] floating enable, resize set 800 600, move scratchpad
 for_window [class="Pavucontrol"] floating enable, resize set 650 400, move position center
 for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
 for_window [class="Blueberry.py"] floating enable, resize set 646 442, move position center

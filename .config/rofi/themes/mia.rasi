@@ -1,20 +1,23 @@
-* {
-  bg: #282c34;
-  bg-alt: #21252b;
+configuration {
+  modes: "window,drun,run";
+  font: "Roboto Medium 12";
+  display-drun: "Apps:";
+  display-window: "Windows:";
+  drun-display-format: "{name}";
+  show-icons: true;
+  icon-theme: "kora";
 
-  fg: #FFFFFF;
-  fg-alt: #828791;
-
-  /* accent-color: #5C6370; */
-  accent-color: #2D333B;
-
-  background-color: transparent;
-  
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
 }
+
+@theme "/home/gemr/.config/rofi/themes/nord.rasi"
 
 window {
   width: 35%;

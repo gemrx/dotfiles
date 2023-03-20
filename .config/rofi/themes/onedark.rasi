@@ -1,0 +1,17 @@
+* {
+  bg: #282C34;
+  bg-alt: #282C34;
+
+  fg: #FFFFFF;
+  fg-alt: #707880;
+
+  /* accent-color: #5C6370; */
+  accent-color: #2D333B;
+
+  background-color: transparent;
+  
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
