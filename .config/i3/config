@@ -14,14 +14,14 @@ font pango:Roboto Medium 11
 
 # --------> START APPLICATIONS <--------
 
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # NetworkManager nm-applet
 exec --no-startup-id nm-applet
 
 # Insync
 exec --no-startup-id insync start
-
-# Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Autotiling
 exec_always --no-startup-id autotiling.py
@@ -51,7 +51,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:ctrl_alt_toggle'"
 
 # Lock session
-bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l
+bindsym $mod+p exec --no-startup-id betterlockscreen -l
 
 # Take screenshots with flameshot
 bindsym Print exec --no-startup-id flameshot full
@@ -226,8 +226,8 @@ hide_edge_borders smart
 
 # Gaps size
 # 0 - 3  
-gaps inner 3
-gaps outer 3 
+gaps inner 0
+gaps outer 0 
 
 # smart gaps
 smart_gaps on
