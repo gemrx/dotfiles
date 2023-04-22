@@ -20,7 +20,7 @@ configuration {
 
 window {
   width: 40%;
-  border: 2;
+  border: 3;
   border-color: #3477AD;
 }
 

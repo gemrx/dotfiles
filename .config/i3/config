@@ -219,7 +219,7 @@ bindsym $mod+r mode "resize"
 # --------> RULES <--------
 
 # Include borders for all applications
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 
 # Hide borders on workspaces with only one window visible
 hide_edge_borders smart
