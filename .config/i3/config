@@ -74,9 +74,11 @@ floating_modifier $mod
 # Execute Alacritty
 bindsym $mod+Return exec --no-startup-id alacritty
 
-# Start Dropdown Alacritty if does not exist
-bindsym $mod+Shift+backslash exec --no-startup-id "pgrep -f '^alacritty --class Dropdown,Dropdown' || alacritty --class Dropdown,Dropdown"
-bindsym $mod+backslash [class="Dropdown"] scratchpad show; move position center
+# Start Dropdown Alacritty 
+bindsym $mod+Shift+backslash exec --no-startup-id "pgrep -f '^alacritty --class DropdownAlacritty,DropdownAlacritty' || alacritty --class DropdownAlacritty,DropdownAlacritty -e sh -c 'neofetch; exec $SHELL'"
+
+# Show Dropdown Alacritty
+bindsym $mod+backslash [class="DropdownAlacritty"] scratchpad show; move position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -233,7 +235,9 @@ gaps outer 0
 smart_gaps on
 
 # Open certain apps in floating mode by default
-for_window [class="Dropdown"] floating enable, resize set 800 600, move scratchpad
+for_window [class="DropdownAlacritty"] floating enable, resize set 800 600, move scratchpad
+for_window [class="Insync"] floating enable, resize set, resize set 950 680, move pistion center
+for_window [class="nmtui"] floating enable, resize set 800 600, move position center
 for_window [class="Pavucontrol"] floating enable, resize set 650 400, move position center
 for_window [class="Nitrogen"] floating enable, resize set 740 512, move position center
 for_window [class="Blueberry.py"] floating enable, resize set 646 442, move position center
