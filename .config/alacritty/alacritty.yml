@@ -1,5 +1,9 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
+# Colors
+import:
+ - ~/.config/alacritty/themes/onedark.yml
+
 # Window configuration
 window:
   padding:
@@ -14,8 +18,6 @@ window:
 scrolling:
   history: 10000
   multiplier: 3
-
-
 
 # Font configuration
 font:
@@ -33,6 +35,7 @@ font:
     style: Bold Italic
   size: 12
 
-# Colors
-import:
- - ~/.config/alacritty/themes/onedark.yml
+# Keybinding
+key_bindings:
+  - { key: Back, mods: Control, chars: "\x17"} # map Control+Backspace to Ctrl+W.
+  - { key: Q, mods: Command, action: Quit }
