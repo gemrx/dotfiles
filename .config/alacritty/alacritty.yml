@@ -38,4 +38,3 @@ font:
 # Keybinding
 key_bindings:
   - { key: Back, mods: Control, chars: "\x17"} # map Control+Backspace to Ctrl+W.
-  - { key: Q, mods: Command, action: Quit }

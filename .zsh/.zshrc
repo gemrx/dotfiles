@@ -8,6 +8,7 @@ fi
 # --------> EXPORTS <--------
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.zsh
+export WORDCHARS=${WORDCHARS:s:/:} # exclude from WORDCHARS
 
 # --------> HISTORY CONFIG <--------
 export HISTFILE=$ZSH/.zsh_history
@@ -24,6 +25,16 @@ bindkey '^[[1;5D' backward-word  # Ctrl+Left
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
+# Enable tab completion for dnf command
+autoload -Uz compinit && compinit
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:cd:*' menu yes select
+zstyle ':completion:*:(cd|pushd):*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:(cd|pushd):*' group-order local-directories directory-stack path-directories
+zstyle ':completion:*:(cd|pushd):*' verbose yes
+zstyle ':completion:*:(cd|pushd):*' list-colors ${(s.:.)LS_COLORS}
+compctl -k "((${(f)${(M)${(s: :)BUFFER}:#dnf*}:#*install*} --packages -q))" dnf
+
 # --------> ALIASES <--------
 source $ZSH/aliases.zsh
 
@@ -36,3 +47,7 @@ source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
