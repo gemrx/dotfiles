@@ -22,16 +22,16 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: RobotoMono Nerd Font
+    family: JetBrainsMonoNL Nerd Font
     style: Medium
   bold:
-    family: RobotoMono Nerd Font
+    family: JetBrainsMonoNL Nerd Font
     style: Bold
   italic:
-   family: RobotoMono Nerd Font
+   family: JetBrainsMonoNL Nerd Font
    style: Medium Italic
   bold_italic:
-    family: RobotoMono Nerd Font
+    family: JetBrainsMonoNL Nerd Font
     style: Bold Italic
   size: 12
 
