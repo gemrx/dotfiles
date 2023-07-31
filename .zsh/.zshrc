@@ -11,7 +11,7 @@ export ZSH=$HOME/.zsh
 export WORDCHARS=${WORDCHARS:s:/:} # exclude from WORDCHARS
 
 # --------> HISTORY CONFIG <--------
-export HISTFILE=$ZSH/.zsh_history
+export HISTFILE=~/.zsh_history
 export HISTSIZE=10000  # How many commands zsh will load to memory
 export SAVEHIST=10000  # How many commands history will save on file
 setopt HIST_IGNORE_ALL_DUPS  # History won't save duplicates
