@@ -12,7 +12,7 @@ terminal = "alacritty"
 def autostart_always():
     # Programs or commands to be executed each time qtile is loaded
     programs = [
-        "picom &",
+        "picom -b",
     ]
     for program in programs:
         subprocess.Popen(program, shell=True)
