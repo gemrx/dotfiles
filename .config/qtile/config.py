@@ -31,7 +31,11 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
 
+    # Launch rofi
     Key([mod], "d", lazy.spawn("rofi -show drun -theme .config/rofi/launchers/type-1/style-1.rasi")),
+
+    # Launch powermenu
+    Key([mod, "shift"], "p", lazy.spawn(".config/rofi/powermenu/type-2/powermenu.sh")),
 
     # Screenshots with flameshot
     Key([], "Print", lazy.spawn("flameshot gui --path Pictures/Screenshots")),
