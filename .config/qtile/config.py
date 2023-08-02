@@ -31,9 +31,11 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
 
+    Key([mod], "d", lazy.spawn("rofi -show drun -theme .config/rofi/launchers/type-1/style-1.rasi")),
+
     # Screenshots with flameshot
-    Key([], "Print", lazy.spawn("flameshot gui --path /home/gemr/Pictures/Screenshots")),
-    Key(["control"], "Print", lazy.spawn("flameshot full --path /home/gemr/Pictures/Screenshots")),
+    Key([], "Print", lazy.spawn("flameshot gui --path Pictures/Screenshots")),
+    Key(["control"], "Print", lazy.spawn("flameshot full --path Pictures/Screenshots")),
 
     # Switch windows focus
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
