@@ -13,6 +13,7 @@ def autostart_always():
     # Programs or commands to be executed each time qtile is loaded
     programs = [
         "picom -b",
+        "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1",
     ]
     for program in programs:
         subprocess.Popen(program, shell=True)
@@ -62,6 +63,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -72,6 +74,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
+
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -107,19 +110,35 @@ for i in groups:
         ]
     )
 
+layout_theme = {
+    "border_width": 2,
+    "border_focus": "#61afef",
+    "border_normal": "#051c2e" 
+}
+
 layouts = [
-    layout.Max(),
-    layout.TreeTab(),
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Max(
+        border_width = 0,
+        border_focus = "#61afef",
+        border_normal = "#051c2e"
+    ),
+    layout.Stack(
+        num_stacks = 1,
+        border_width = 2,
+        margin = 5,
+        border_focus = "#61afef",
+        border_normal = "#051c2e",
+    ),
+    layout.TreeTab(**layout_theme),
+    layout.Columns(**layout_theme),
+    layout.Bsp(),
+    layout.Matrix(),
+    layout.MonadTall(),
+    layout.MonadWide(),
+    layout.RatioTile(),
+    layout.Tile(),
+    layout.VerticalTile(),
+    layout.Zoomy(),
 ]
 
 widget_defaults = dict(
