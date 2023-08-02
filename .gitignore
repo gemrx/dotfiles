@@ -1,2 +1,2 @@
-.zsh/plugins/
-.zsh/themes/
+.zsh/plugins/*
+.zsh/themes/*
