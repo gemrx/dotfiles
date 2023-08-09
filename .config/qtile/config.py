@@ -36,7 +36,7 @@ keys = [
     Key([mod], "d", lazy.spawn(".config/rofi/scripts/launcher_t1")),
 
     # Launch powermenu
-    Key([mod, "shift"], "p", lazy.spawn(".config/rofi/scripts/powermenu_t2")),
+    Key([mod, "shift"], "p", lazy.spawn(".config/rofi/scripts/powermenu_t4")),
 
     # Screenshots with flameshot
     Key([], "Print", lazy.spawn("flameshot gui --path Pictures/Screenshots")),
