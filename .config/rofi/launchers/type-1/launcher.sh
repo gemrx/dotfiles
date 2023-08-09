@@ -17,5 +17,5 @@ theme='style-11'
 ## Run
 rofi \
     -show drun \
-    -dpi 120 \
+    -dpi 130 \
     -theme ${dir}/${theme}.rasi
