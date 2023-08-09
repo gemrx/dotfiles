@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser";
+	modi:                       "drun,run,window,filebrowser";
     show-icons:                 false;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -60,7 +60,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       900px;
     x-offset:                    0px;
     y-offset:                    0px;
 

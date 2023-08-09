@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser";
+	modi:                       "drun,window,run,filebrowser";
     show-icons:                 false;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -60,7 +60,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       700px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -160,7 +160,7 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       6;
+    lines:                       7;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;

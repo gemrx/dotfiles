@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,ssh,window";
+	modi:                       "drun,run,filebrowser,window";
     show-icons:                 false;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -18,6 +18,10 @@ configuration {
 	display-ssh:                " SSH";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
+
+    /* custom rofi keybindings */
+    kb-mode-next: "Super+Down";
+    kb-mode-previous: "Super+Up";
 }
 
 /*****----- Global Properties -----*****/
@@ -65,7 +69,7 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
+    border:                      2px solid;
     border-radius:               10px;
     border-color:                @border-colour;
     cursor:                      "default";
