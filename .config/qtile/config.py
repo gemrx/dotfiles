@@ -1,7 +1,7 @@
 import os
 import subprocess
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -85,8 +85,22 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+# Groups
+groups = []
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_layouts = ["max", "stack", "stack", "max", "max", "max", "max", "max", "max"]
 
+# Append groups to the groups list
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name = group_names[i],
+            layout = group_layouts[i],
+            label = group_labels[i]
+        )
+    )
+# Groups keybindings
 for i in groups:
     keys.extend(
         [
@@ -111,6 +125,15 @@ for i in groups:
         ]
     )
 
+# Append ScratchPads to the groups list
+groups.append(ScratchPad("scratchpad", [
+    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, on_focus_lost_hide=True),
+]))
+# Scratchpad keybindings
+keys.extend([
+    Key([mod], "backslash", lazy.group["scratchpad"].dropdown_toggle("term")),
+])
+
 layout_theme = {
     "border_width": 2,
     "border_focus": "#61afef",
@@ -121,25 +144,25 @@ layouts = [
     layout.Max(
         border_width = 0,
         border_focus = "#61afef",
-        border_normal = "#051c2e"
+        border_normal = "#051c2e",
     ),
     layout.Stack(
         num_stacks = 1,
         border_width = 2,
-        margin = 5,
+        margin = 6,
         border_focus = "#61afef",
         border_normal = "#051c2e",
     ),
-    layout.TreeTab(**layout_theme),
-    layout.Columns(**layout_theme),
-    layout.Bsp(),
-    layout.Matrix(),
     layout.MonadTall(),
-    layout.MonadWide(),
-    layout.RatioTile(),
-    layout.Tile(),
-    layout.VerticalTile(),
-    layout.Zoomy(),
+    # layout.TreeTab(**layout_theme),
+    # layout.Columns(**layout_theme),
+    # layout.Bsp(),
+    # layout.Matrix(),
+    # layout.MonadWide(),
+    # layout.RatioTile(),
+    # layout.Tile(),
+    # layout.VerticalTile(),
+    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -195,6 +218,9 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width = 2,
+    border_focus = "#61afef",
+    border_normal = "#051c2e",
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
