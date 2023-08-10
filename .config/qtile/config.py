@@ -127,7 +127,7 @@ for i in groups:
 
 # Append ScratchPads to the groups list
 groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, on_focus_lost_hide=True),
+    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1, on_focus_lost_hide=True),
 ]))
 # Scratchpad keybindings
 keys.extend([
@@ -136,22 +136,22 @@ keys.extend([
 
 layout_theme = {
     "border_width": 2,
-    "border_focus": "#61afef",
-    "border_normal": "#051c2e" 
+    "border_focus": "#61AFEF",
+    "border_normal": "#051C2E" 
 }
 
 layouts = [
     layout.Max(
         border_width = 0,
-        border_focus = "#61afef",
-        border_normal = "#051c2e",
+        border_focus = "#61AFEF",
+        border_normal = "#051C2E",
     ),
     layout.Stack(
         num_stacks = 1,
         border_width = 2,
         margin = 6,
-        border_focus = "#61afef",
-        border_normal = "#051c2e",
+        border_focus = "#61AFEF",
+        border_normal = "#051C2E",
     ),
     layout.MonadTall(),
     # layout.TreeTab(**layout_theme),
@@ -166,7 +166,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font = "Roboto",
+    font = "JetBrainsMono NF",
     fontsize = 18,
     padding = 4,
 )
@@ -177,27 +177,41 @@ screens = [
         bottom = bar.Bar(
             [
                 widget.GroupBox(
+                    borderwidth = 4,
+                    active = "FFFFFF",
+                    inactive = "#4D4D4D",
+                    highlight_method = "line",
+                    highlight_color = "#2E3138",
+                    this_current_screen_border = "#61AFEF",
                     disable_drag = True,
                 ),
-                widget.WindowName(
-                    font = "Roboto"
-                ),
+                widget.Spacer(),
+                # widget.WindowName(
+                #     background = "#61AFEF",
+                # ),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                
+                # widget.TextBox(text = "󰂄", fontsize = 24),
+                widget.Battery(
+                    show_short_text=False,
+                ),
+                widget.Sep(linewidth = 0, padding = 12),
+                widget.Clock(format="%A, %B %-d 󰥔 %I:%M %p"),
+                widget.Sep(linewidth = 0, padding = 12),
+                # widget.QuickExit(),
                 widget.Systray(
                     icon_size = 22,
                 ),
-                # widget.TextBox(text = "󰂄", fontsize = 24),
-                # widget.Battery(),
-                # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                # widget.QuickExit(),
-                widget.CurrentLayout()
+                widget.Sep(linewidth = 0, padding = 12),
+                widget.CurrentLayout(),
+                widget.Sep(linewidth = 0, padding = 12),
             ],
-            size = 28,
+            size = 32,
             background = '#1E2127',
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
