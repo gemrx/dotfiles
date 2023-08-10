@@ -8,22 +8,23 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = "alacritty"
 
+@hook.subscribe.startup_once
+def autostart_once():
+    # Programs or commands to be executed at the first startup
+    programs = [
+        "nm-applet &"
+        "insync start &", # start onedrive
+        "nitrogen --restore", # set backrgound image
+    ]
+    for program in programs:
+        subprocess.Popen(program, shell=True)
+
 @hook.subscribe.startup
 def autostart_always():
     # Programs or commands to be executed each time qtile is loaded
     programs = [
         "picom -b",
         "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1",
-    ]
-    for program in programs:
-        subprocess.Popen(program, shell=True)
-
-@hook.subscribe.startup_once
-def autostart_once():
-    # Programs or commands to be executed at the first startup
-    programs = [
-        "insync start &",
-        "nitrogen --restore",
     ]
     for program in programs:
         subprocess.Popen(program, shell=True)
@@ -142,37 +143,39 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
-    padding=3,
+    font = "Roboto",
+    fontsize = 18,
+    padding = 4,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
-    Screen(
-        bottom=bar.Bar(
+    Screen (
+        bottom = bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(
                     disable_drag = True,
                 ),
-                widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(
+                    font = "Roboto"
+                ),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Systray(
+                    icon_size = 22,
+                ),
+                # widget.TextBox(text = "󰂄", fontsize = 24),
+                # widget.Battery(),
+                # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                # widget.QuickExit(),
+                widget.CurrentLayout()
             ],
-            24,
+            size = 28,
+            background = '#1E2127',
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
