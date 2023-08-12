@@ -132,7 +132,7 @@ for i in groups:
 
 # Append ScratchPads to the groups list
 groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1, on_focus_lost_hide=True),
+    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9, on_focus_lost_hide=True),
 ]))
 # Scratchpad keybindings
 keys.extend([
@@ -162,19 +162,22 @@ screens = [
                     active = "#C5CAD3",
                     inactive = "#4D4D4D",
                     highlight_method = "line",
-                    highlight_color = "#393E46",
+                    highlight_color = "#1E2127",
                     this_current_screen_border = "#61AFEF",
                     disable_drag = True,
+                    hide_unused=False,
+                    margin_x=0,
+                    padding=3,
                 ),
 
-                # Interactive Tabs
+                # Task List
                 widget.TaskList(
                     icon_size = 0,
                     border = "#393E46",
                     unfocused_border = "#282B31",
                     rounded = False,
                     margin = 0,
-                    padding = 2,
+                    padding = 4,
                     highlight_method="block",
                     title_width_method = "uniform",
                     txt_floating = "🗗 ",
@@ -184,14 +187,12 @@ screens = [
                 widget.Sep(linewidth = 0, padding = 10),
 
                 # Date
-                widget.Clock(format="<span foreground='#E5C07B'> </span>%A, %B %-d"),
+                widget.Clock(format="<span foreground='#E5C07B'></span>%A, %b %-d"),
                 widget.Sep(linewidth = 0, padding = 15),
 
                 # Time
                 widget.Clock(markup=True, format="<span foreground='#FFFFFF'>󰥔 </span>%I:%M %p"),
                 widget.Sep(linewidth=0, padding = 15),
-
-                # widget.Volume(),
 
                 # Battery
                 widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
@@ -199,9 +200,12 @@ screens = [
                 widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
                 widget.Sep(linewidth = 0, padding = 15),
 
-                # System tray
-                widget.Systray(
-                    icon_size = 22,
+                widget.WidgetBox(
+                    widgets=[widget.Systray(icon_size=22)],
+                    foreground="#E5C07B",
+                    text_closed=" ",
+                    text_open="  ",
+                    close_button_location="right"
                 ),
                 widget.Sep(linewidth = 0, padding = 15),
                 
@@ -210,6 +214,7 @@ screens = [
             ],
             size = 34,
             background = '#1E2127',
+            opacity=0.9,
         ),
     ),
 ]
