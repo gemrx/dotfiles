@@ -246,7 +246,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 8 # Usar dos pixeles menos que los bordes redondeados de picom
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -310,7 +310,7 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#1E2127"
-    foreground = "#D8DEE9"
+    foreground = "#C5CAD3"
     frame_color = "#61AfEF"
     timeout = 12
     # Icon for notifications with low urgency, uncomment to enable
@@ -318,7 +318,7 @@
 
 [urgency_normal]
     background = "#1E2127"
-    foreground = "#FFFFFF"
+    foreground = "#C5CAD3"
     frame_color = "#61AFEF"
     timeout = 12
     # Icon for notifications with normal urgency, uncomment to enable

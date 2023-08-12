@@ -4,7 +4,6 @@ colors:
   primary:
     background: '#282c34'
     foreground: '#abb2bf'
-    bright_foreground: '#e6efff'
 
   # Normal colors
   normal:

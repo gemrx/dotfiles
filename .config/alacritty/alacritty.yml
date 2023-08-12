@@ -30,16 +30,16 @@ cursor:
 # Font configuration
 font:
   normal:
-    family: JetBrainsMonoNL Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Medium
   bold:
-    family: JetBrainsMonoNL Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold
   italic:
-   family: JetBrainsMonoNL Nerd Font
+   family: JetBrainsMono Nerd Font
    style: Medium Italic
   bold_italic:
-    family: JetBrainsMonoNL Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
   size: 12
 
