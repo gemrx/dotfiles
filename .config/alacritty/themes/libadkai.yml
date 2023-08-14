@@ -1,0 +1,28 @@
+# Colors (OneDark)
+colors:
+  # Default colors
+  primary:
+    background: '#262626'
+    foreground: '#CCCCCC'
+
+  # Normal colors
+  normal:
+    black:   '#666666'
+    red:     '#FF657A'
+    green:   '#BAD761'
+    yellow:  '#FFD76D'
+    blue:    '#9DAFD2'
+    magenta: '#C39AC9'
+    cyan:    '#9CD1BB'
+    white:   '#EAF2F1'
+
+  # Bright colors
+  bright:
+    black:   '#666666'
+    red:     '#FF657A'
+    green:   '#BAD761'
+    yellow:  '#FFD76D'
+    blue:    '#9DAFD2'
+    magenta: '#C39AC9'
+    cyan:    '#9CD1BB'
+    white:   '#EAF2F1'

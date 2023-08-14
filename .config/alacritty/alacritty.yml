@@ -2,7 +2,7 @@
 
 # Colors
 import:
- - ~/.config/alacritty/themes/onedark.yml
+ - ~/.config/alacritty/themes/libadkai.yml
 
 # Window configuration
 window:
@@ -23,7 +23,7 @@ scrolling:
 cursor:
   style:
     shape: Block
-    blinking: Always
+    #blinking: Always
   blink_interval: 500
   blink_timeout: 0
 

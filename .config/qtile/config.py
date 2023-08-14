@@ -4,6 +4,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from themes.obsidian import *
 
 mod = "mod4"
 terminal = "alacritty"
@@ -25,7 +26,7 @@ def autostart_always():
     # Programs or commands to be executed each time qtile is loaded
     programs = [
         "picom -b",
-        "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1",
+        # "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1",
     ]
     for program in programs:
         subprocess.Popen(program, shell=True)
@@ -132,7 +133,7 @@ for i in groups:
 
 # Append ScratchPads to the groups list
 groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9, on_focus_lost_hide=True),
+    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1.0, on_focus_lost_hide=True),
 ]))
 # Scratchpad keybindings
 keys.extend([
@@ -141,15 +142,15 @@ keys.extend([
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks = 1, border_width = 3, margin = 6, border_focus = "#61AFEF", border_normal = "#1E2127"),
-    layout.MonadTall(border_width = 3, margin = 3, border_focus = "#61AFEF", border_normal = "#1E2127"),
+    layout.Stack(num_stacks=1, border_width=3, margin=6, border_focus=blue, border_normal=background),
+    layout.MonadTall(border_width=3, margin=4, border_focus=blue, border_normal=background),
 ]
 
 widget_defaults = dict(
     font = "JetBrainsMono NF Medium",
     fontsize = 18,
     padding = 3,
-    foreground ="#C5CAD3",
+    foreground ="#C5CAD3", # foreground
 )
 extension_defaults = widget_defaults.copy()
 
@@ -159,11 +160,11 @@ screens = [
             [   
                 widget.GroupBox(
                     borderwidth = 4,
-                    active = "#C5CAD3",
-                    inactive = "#4D4D4D",
+                    active = foreground,
+                    inactive = inactive,
                     highlight_method = "line",
-                    highlight_color = "#1E2127",
-                    this_current_screen_border = "#61AFEF",
+                    highlight_color = background,
+                    this_current_screen_border = blue,
                     disable_drag = True,
                     hide_unused=False,
                     margin_x=0,
@@ -173,8 +174,8 @@ screens = [
                 # Task List
                 widget.TaskList(
                     icon_size = 0,
-                    border = "#393E46",
-                    unfocused_border = "#282B31",
+                    border = focused,
+                    unfocused_border = unfocused,
                     rounded = False,
                     margin = 0,
                     padding = 4,
@@ -187,7 +188,7 @@ screens = [
                 widget.Sep(linewidth = 0, padding = 10),
 
                 # Date
-                widget.Clock(format="<span foreground='#E5C07B'></span>%A, %b %-d"),
+                widget.Clock(format="%A, %b %-d"),
                 widget.Sep(linewidth = 0, padding = 15),
 
                 # Time
@@ -202,7 +203,7 @@ screens = [
 
                 widget.WidgetBox(
                     widgets=[widget.Systray(icon_size=22)],
-                    foreground="#E5C07B",
+                    foreground=yellow,
                     text_closed=" ",
                     text_open="  ",
                     close_button_location="right"
@@ -210,10 +211,10 @@ screens = [
                 widget.Sep(linewidth = 0, padding = 15),
                 
                 # Layout icon
-                widget.CurrentLayoutIcon(scale = 0.6, background="#61AFEF"),
+                widget.CurrentLayoutIcon(scale = 0.6, background=blue),
             ],
             size = 34,
-            background = '#1E2127',
+            background = background,
             opacity=0.9,
         ),
     ),
@@ -233,8 +234,8 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width = 2,
-    border_focus = "#61AFEF",
-    border_normal = "#1E2127",
+    border_focus = blue,
+    border_normal = background,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
