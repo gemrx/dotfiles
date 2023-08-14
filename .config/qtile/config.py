@@ -150,7 +150,7 @@ widget_defaults = dict(
     font = "JetBrainsMono NF Medium",
     fontsize = 18,
     padding = 3,
-    foreground ="#C5CAD3", # foreground
+    foreground =foreground,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -215,7 +215,7 @@ screens = [
             ],
             size = 34,
             background = background,
-            opacity=0.9,
+            opacity=1.0,
         ),
     ),
 ]
