@@ -4,7 +4,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from themes.obsidian import *
+from themes.monokai_pro_fo import * 
 
 mod = "mod4"
 terminal = "alacritty"
@@ -13,9 +13,9 @@ terminal = "alacritty"
 def autostart_once():
     # Programs or commands to be executed at the first startup
     programs = [
-        "nm-applet &", # network manager
-        "insync start &", # start onedrive
-        "pasystray -m 100 -i 2 --key-grabbing &" # volume tray
+        "insync start &", # onedrive sync
+        "nm-applet &", # network manager system tray
+        "pasystray -m 100 -i 2 --key-grabbing &", # volume manager system tray
         "nitrogen --restore", # set backrgound image
     ]
     for program in programs:
@@ -26,15 +26,11 @@ def autostart_always():
     # Programs or commands to be executed each time qtile is loaded
     programs = [
         "picom -b",
-        # "xinput --set-prop 11 'libinput Accel Profile Enabled' 0, 1",
     ]
     for program in programs:
         subprocess.Popen(program, shell=True)
 
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-
     # Launch rofi
     Key([mod], "d", lazy.spawn(".config/rofi/scripts/launcher_t1")),
 
@@ -58,23 +54,15 @@ keys = [
     Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
-
+    
+    # grow, shrink and reset MonadTall layout
     Key([mod], "i", lazy.layout.grow()),
     Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.normalize()),
-
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
-    # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    # Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    # Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "n", lazy.layout.reset()),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
+    # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
     Key(
         [mod, "shift"],
         "Return",
@@ -95,62 +83,52 @@ keys = [
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_layouts = ["max", "stack", "monadtall", "max", "max", "max", "max", "max", "stack"]
+group_layouts = ["max", "stack", "monadtall", "stack", "stack", "stack", "stack", "stack", "stack"]
 
-# Append groups to the groups list
 for i in range(len(group_names)):
     groups.append(
         Group(
-            name = group_names[i],
-            layout = group_layouts[i],
-            label = group_labels[i]
+            name=group_names[i],
+            layout=group_layouts[i],
+            label=group_labels[i]
         )
     )
+
 # Groups keybindings
 for i in groups:
     keys.extend(
         [
             # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
+            Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
+
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name)),
         ]
     )
 
-# Append ScratchPads to the groups list
+# Scratchpads
 groups.append(ScratchPad("scratchpad", [
     DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1.0, on_focus_lost_hide=True),
 ]))
+
 # Scratchpad keybindings
 keys.extend([
     Key([mod], "backslash", lazy.group["scratchpad"].dropdown_toggle("term")),
 ])
 
+# Layouts
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=1, border_width=3, margin=6, border_focus=blue, border_normal=background),
-    layout.MonadTall(border_width=3, margin=4, border_focus=blue, border_normal=background),
+    layout.Stack(num_stacks=1, border_width=3, margin=6, border_focus=blue, border_normal=border_normal),
+    layout.MonadTall(border_width=3, margin=6, border_focus=blue, border_normal=border_normal),
 ]
 
+# Widgets
 widget_defaults = dict(
-    font = "JetBrainsMono NF Medium",
-    fontsize = 18,
-    padding = 3,
-    foreground =foreground,
+    font="JetBrainsMono NF Medium",
+    fontsize=18,
+    padding=3,
+    foreground=foreground,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -158,6 +136,7 @@ screens = [
     Screen (
         bottom = bar.Bar(
             [   
+                # Group Box
                 widget.GroupBox(
                     borderwidth = 4,
                     active = foreground,
@@ -173,17 +152,17 @@ screens = [
 
                 # Task List
                 widget.TaskList(
-                    icon_size = 0,
-                    border = focused,
-                    unfocused_border = unfocused,
-                    rounded = False,
-                    margin = 0,
-                    padding = 4,
+                    icon_size=0,
+                    border=focused,
+                    unfocused_border=unfocused,
+                    rounded=False,
+                    margin=0,
+                    padding=4,
                     highlight_method="block",
-                    title_width_method = "uniform",
-                    txt_floating = "🗗 ",
-                    txt_maximized = "🗖 ",
-                    txt_minimized = "🗕 ",
+                    title_width_method="uniform",
+                    txt_floating="🗗 ",
+                    txt_maximized="🗖 ",
+                    txt_minimized="🗕 ",
                 ),
                 widget.Sep(linewidth = 0, padding = 10),
 
@@ -201,6 +180,7 @@ screens = [
                 widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
                 widget.Sep(linewidth = 0, padding = 15),
 
+                # Widget Box
                 widget.WidgetBox(
                     widgets=[widget.Systray(icon_size=22)],
                     foreground=yellow,
@@ -208,13 +188,13 @@ screens = [
                     text_open="  ",
                     close_button_location="right"
                 ),
-                widget.Sep(linewidth = 0, padding = 15),
+                widget.Sep(linewidth=0, padding=1),
                 
                 # Layout icon
-                widget.CurrentLayoutIcon(scale = 0.6, background=blue),
+                widget.CurrentLayoutIcon(background=background, scale=0.6),
             ],
-            size = 34,
-            background = background,
+            size=34,
+            background=background,
             opacity=1.0,
         ),
     ),
@@ -247,6 +227,8 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
         Match(wm_class="pavucontrol"),
         Match(wm_class="blueman-manager"),
+        Match(wm_class="gpick"),
+	Match(wm_class="nitrogen")
     ]
 )
 auto_fullscreen = True

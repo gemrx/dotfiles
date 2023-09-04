@@ -5,6 +5,8 @@ inactive = "#4D4D4D"
 focused = "#393E46"
 unfocused = "#282B31"
 
+border_normal = "#1E2127"
+
 red = "#E06C75"
 blue = "#61AFEF"
 green = "#98C379"

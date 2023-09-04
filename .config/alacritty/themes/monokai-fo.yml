@@ -1,8 +1,8 @@
-# Colors (OneDark)
+# Colors (Monokai Pro Filter Octagon)
 colors:
   # Default colors
   primary:
-    background: '#262626'
+    background: '#282A3A'
     foreground: '#CCCCCC'
 
   # Normal colors

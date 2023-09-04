@@ -2,7 +2,7 @@
 
 # Colors
 import:
- - ~/.config/alacritty/themes/libadkai.yml
+ - ~/.config/alacritty/themes/monokai-fo.yml
 
 # Window configuration
 window:
