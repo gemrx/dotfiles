@@ -108,7 +108,7 @@ for i in groups:
 
 # Scratchpads
 groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1.0, on_focus_lost_hide=True),
+    DropDown("term", "alacritty --class=ScratchAlacritty", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1, on_focus_lost_hide=True),
 ]))
 
 # Scratchpad keybindings
@@ -119,8 +119,8 @@ keys.extend([
 # Layouts
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=1, border_width=3, margin=6, border_focus=blue, border_normal=border_normal),
-    layout.MonadTall(border_width=3, margin=6, border_focus=blue, border_normal=border_normal),
+    layout.Stack(num_stacks=1, border_width=3, margin=2, border_focus=blue, border_normal=border_normal),
+    layout.MonadTall(border_width=3, margin=2, border_focus=blue, border_normal=border_normal),
 ]
 
 # Widgets
@@ -195,7 +195,7 @@ screens = [
             ],
             size=34,
             background=background,
-            opacity=1.0,
+            opacity=0.90,
         ),
     ),
 ]
@@ -228,7 +228,8 @@ floating_layout = layout.Floating(
         Match(wm_class="pavucontrol"),
         Match(wm_class="blueman-manager"),
         Match(wm_class="gpick"),
-	Match(wm_class="nitrogen")
+	Match(wm_class="nitrogen"),
+	Match(wm_class="gnome-calculator")
     ]
 )
 auto_fullscreen = True
