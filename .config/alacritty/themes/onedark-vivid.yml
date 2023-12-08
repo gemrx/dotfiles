@@ -1,0 +1,29 @@
+# Colors (OneDark Vivid)
+colors:
+  # Default colors
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
+
+  # Normal colors
+  normal:
+    black:   '#3f4451'
+    red:     '#e05561'
+    green:   '#98c379'
+    yellow:  '#d18f52'
+    blue:    '#4aa5f0'
+    magenta: '#c162de'
+    cyan:    '#42b3c2'
+    white:   '#d7dae0'
+
+  # Bright colors
+  bright:
+    black:   '#4f5666'
+    red:     '#ff616e'
+    green:   '#a5e075'
+    yellow:  '#f0a45d'
+    blue:    '#4dc4ff'
+    magenta: '#de73ff'
+    cyan:    '#4cd1e0'
+    white:   '#e6e6e6'
+    

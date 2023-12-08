@@ -2,7 +2,7 @@
 
 # Colors
 import:
- - ~/.config/alacritty/themes/monokai-fo.yml
+ - ~/.config/alacritty/themes/onedark-vivid.yml
 
 # Window configuration
 window:
@@ -31,13 +31,13 @@ cursor:
 font:
   normal:
     family: JetBrainsMono Nerd Font
-    style: Medium
+    style: Regular
   bold:
     family: JetBrainsMono Nerd Font
     style: Bold
   italic:
    family: JetBrainsMono Nerd Font
-   style: Medium Italic
+   style: Regular Italic
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
