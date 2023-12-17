@@ -8,14 +8,14 @@ fi
 # --------> GENERAL <--------
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.zsh
-export WORDCHARS=${WORDCHARS:s:/:} # exclude from WORDCHARS
+export WORDCHARS=${WORDCHARS:s:/:} # do not consider this chars as part of the word
 
 # --------> HISTORY CONFIG <--------
 export HISTFILE=~/.zsh_history
-export HISTSIZE=10000  # How many commands zsh will load to memory
-export SAVEHIST=10000  # How many commands history will save on file
-setopt HIST_IGNORE_ALL_DUPS  # History won't save duplicates
-setopt HIST_FIND_NO_DUPS  # History won't show duplicates on search
+export HISTSIZE=10000  # how many commands zsh will load to memory
+export SAVEHIST=10000  # how many commands history will save on file
+setopt HIST_IGNORE_ALL_DUPS  # history won't save duplicates
+setopt HIST_FIND_NO_DUPS  # history won't show duplicates on search
 
 # --------> KEYBINDINGS  <--------
 bindkey '^[[1;5C' forward-word   # Ctrl+Right
@@ -39,11 +39,11 @@ compctl -k "((${(f)${(M)${(s: :)BUFFER}:#dnf*}:#*install*} --packages -q))" dnf
 source $ZSH/aliases.zsh
 
 # --------> THEMES <--------
-source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
+# source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # --------> PLUGINS <--------
 source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -57,12 +57,12 @@ compinit -C
 
 # --------> NVM <--------
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # this loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # --------> FZF <--------
-export FZF_DEFAULT_COMMAND="fd --hidden --follow"  # Override fzf default command to use fd
+export FZF_DEFAULT_COMMAND="fd --hidden --follow"  # override fzf default command to use fd
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # CTRL-T's command
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d" # ALT-C's command
 
@@ -73,4 +73,4 @@ _fzf_compgen_dir() {
     fd --type d . "$1"
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # Source fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # source fzf
