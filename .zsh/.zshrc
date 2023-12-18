@@ -1,15 +1,15 @@
 # Enviroment Variables
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.zsh
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000  # how many commands zsh will load to memory
+export SAVEHIST=10000  # how many commands history will save on file
 export WORDCHARS=${WORDCHARS:s:/:} # do not consider this chars as part of the word
 
 # Aliases
 source $ZSH/aliases.zsh
 
 # History Settings
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000  # how many commands zsh will load to memory
-export SAVEHIST=10000  # how many commands history will save on file
 setopt HIST_IGNORE_ALL_DUPS  # history won't save duplicates
 setopt HIST_FIND_NO_DUPS  # history won't show duplicates on search
 
@@ -28,7 +28,14 @@ source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting settings
 typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,underline'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=green'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,underline'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=green,underline'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan,underline'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan' 
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan' 
+ZSH_HIGHLIGHT_STYLES[default]='fg=cyan' 
 
 # --------> NVM <--------
 # export NVM_DIR="$HOME/.nvm"
