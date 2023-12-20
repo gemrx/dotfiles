@@ -7,8 +7,8 @@ import:
 # Window configuration
 window:
   padding:
-    x: 4
-    y: 4
+    x: 6
+    y: 6
   class:
     instance: Alacritty
     general: Alacritty

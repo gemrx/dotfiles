@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Enviroment Variables
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.zsh
@@ -25,6 +32,7 @@ zstyle ':completion:*:(cd|pushd):*' list-colors ${(s.:.)LS_COLORS}
 # Plugins
 source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 # zsh-syntax-highlighting settings
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -32,10 +40,10 @@ ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,underline'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,underline'
 ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=green,underline'
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan,underline'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan' 
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan' 
-ZSH_HIGHLIGHT_STYLES[default]='fg=cyan' 
+ZSH_HIGHLIGHT_STYLES[path]='fg=none,underline'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=none' 
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=none' 
+ZSH_HIGHLIGHT_STYLES[default]='fg=none' 
 
 # --------> NVM <--------
 # export NVM_DIR="$HOME/.nvm"
@@ -56,3 +64,9 @@ ZSH_HIGHLIGHT_STYLES[default]='fg=cyan'
 # }
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # source fzf
+
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f $ZSH/.p10k.zsh ]] || source $ZSH/.p10k.zsh
