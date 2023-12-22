@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Enviroment Variables
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export ZSH=$HOME/.zsh
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000  # how many commands zsh will load to memory

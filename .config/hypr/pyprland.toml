@@ -1,0 +1,13 @@
+[pyprland]
+plugins = [
+  "scratchpads",
+]
+
+[scratchpads.terminal]
+command = "alacritty --class alacrittyDropDown -e sh -c 'nitch; exec $SHELL'"
+class = "alacrittyDropDown"
+animation = "fromTop"
+unfocus = "hide"
+lazy = "false"
+size = "65% 65%"
+
