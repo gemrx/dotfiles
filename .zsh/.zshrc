@@ -13,6 +13,11 @@ export HISTSIZE=10000  # how many commands zsh will load to memory
 export SAVEHIST=10000  # how many commands history will save on file
 export WORDCHARS=${WORDCHARS:s:/:} # do not consider this chars as part of the word
 
+# Load Rust related environment variables
+if [[ -r "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi
+
 # Aliases
 source $ZSH/aliases.zsh
 
