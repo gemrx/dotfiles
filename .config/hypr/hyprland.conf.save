@@ -19,7 +19,7 @@ env = QT_QPA_PLATFORM="wayland;xcb"
 # <--- AUTOSTART ---> # 
 exec-once = echo "Xft.dpi: 120" | xrdb -merge # scale xwayland applications
 exec-once = waybar
-exec-once = insync start # sync app
+exec-once = insync start # sync app33
 exec-once = ~/.local/bin/pypr # pyrprland plugin
 exec-once = hyprctl setcursor Adwaita 18
 exec-once = swaybg -i ~/Pictures/Wallpapers/OneDark\ Vivid/od-vivid-rain-girl.png -m fit -o '*'
