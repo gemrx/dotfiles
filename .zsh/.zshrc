@@ -50,28 +50,10 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=none'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=none' 
 ZSH_HIGHLIGHT_STYLES[default]='fg=none' 
 
-# --------> NVM <--------
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # this loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# --------> FZF <--------
-# export FZF_DEFAULT_COMMAND="fd --hidden --follow"  # override fzf default command to use fd
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # CTRL-T's command
-# export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d" # ALT-C's command
-
-# _fzf_compgen_path() {
-#     fd . "$1"
-# }
-# _fzf_compgen_dir() {
-#     fd --type d . "$1"
-# }
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # source fzf
-
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f $ZSH/.p10k.zsh ]] || source $ZSH/.p10k.zsh
+
+# Node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
