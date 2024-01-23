@@ -1,0 +1,48 @@
+import = ["/home/nowx/.config/alacritty/themes/onedark-vivid.toml"]
+
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+
+[cursor.style]
+shape = "Block"
+
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Regular Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+dynamic_title = true
+opacity = 1
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 6
+y = 6
