@@ -113,19 +113,19 @@ inputbar {
 
 prompt {
     enabled:                     true;
-    background-color:            inherit;
+    background-color:            transparent; /* inherit */
     text-color:                  inherit;
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "::";
-    background-color:            inherit;
+    background-color:            transparent; /* inherit */
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    background-color:            inherit;
+    background-color:            transparent; /* inherit */
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search...";
@@ -200,7 +200,8 @@ element {
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            var(normal-background);
+    /* background-color:            var(normal-background); */
+    background-color: transparent;
     text-color:                  var(normal-foreground);
 }
 element normal.urgent {
@@ -224,7 +225,8 @@ element selected.active {
     text-color:                  var(selected-active-foreground);
 }
 element alternate.normal {
-    background-color:            var(alternate-normal-background);
+    /* background-color:            var(alternate-normal-background); */
+    background-color:            transparent;
     text-color:                  var(alternate-normal-foreground);
 }
 element alternate.urgent {
