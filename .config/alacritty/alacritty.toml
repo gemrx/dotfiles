@@ -37,7 +37,7 @@ multiplier = 3
 
 [window]
 dynamic_title = true
-opacity = 0.8
+opacity = 1
 
 [window.class]
 general = "Alacritty"
