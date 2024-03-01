@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Enviroment variables
+export PATH="$HOME/.local/bin:$PATH"
 export ZSH=$HOME/.config/zsh
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000  # how many commands zsh will load to memory
@@ -51,3 +52,6 @@ ZSH_HIGHLIGHT_STYLES[default]='fg=none'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Source rust enviroment variables
+. "$HOME/.cargo/env" 
