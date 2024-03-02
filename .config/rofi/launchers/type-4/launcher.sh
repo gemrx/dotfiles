@@ -11,9 +11,11 @@
 ## style-6     style-7     style-8     style-9     style-10
 
 dir="$HOME/.config/rofi/launchers/type-4"
-theme='style-5'
+theme='style-8'
 
 ## Run
 rofi \
+    -x11 \
+    -dpi 120 \
     -show drun \
     -theme ${dir}/${theme}.rasi

@@ -10,7 +10,7 @@
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,window,run,filebrowser";
-    show-icons:                 true;
+    show-icons:                 false;
     display-drun:               " Apps";
     display-run:                " Run";
     display-filebrowser:        " Files";

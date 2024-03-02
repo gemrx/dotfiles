@@ -8,7 +8,7 @@ blink_timeout = 0
 shape = "Block"
 
 [font]
-size = 12
+size = 14
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
