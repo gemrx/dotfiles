@@ -6,6 +6,7 @@ blink_timeout = 0
 
 [cursor.style]
 shape = "Block"
+blinking = "On"
 
 [font]
 size = 14
