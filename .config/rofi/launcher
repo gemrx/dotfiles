@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Launcher style
+style='style-1'
+
+## Run
+rofi \
+    -dpi 96 \
+    -show drun \
+    -theme ${HOME}/.config/rofi/styles/${style}.rasi \
