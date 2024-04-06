@@ -4,7 +4,7 @@ plugins = [
 ]
 
 [scratchpads.terminal]
-command = "alacritty --class alacrittyDropDown -e sh -c 'nitch; exec $SHELL'"
+command = "alacritty --class alacrittyDropDown -e sh -c 'neofetch; exec $SHELL'"
 class = "alacrittyDropDown"
 animation = "fromTop"
 unfocus = "hide"
