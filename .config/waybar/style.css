@@ -1,10 +1,11 @@
 @define-color background #1E2127;
 @define-color background-alt #282c34;
 @define-color blue #4AA5F0;
+@define-color red #E05561;
 
 * {
     font-family: JetBrainsMono, 'Font Awesome 6 Pro Solid', Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -14,6 +15,7 @@ window#waybar {
 }
 
 .modules-left,
+.modules-center,
 .modules-right {
     margin: 0.5em 0.8em;
 }
@@ -22,24 +24,26 @@ window#waybar {
 widget > box, 
 widget > label {
     color: #ffffff;
-    border-radius: 8px;
 }
 
 #workspaces,
+#clock,
+#tray,
 #pulseaudio,
 #memory,
-#clock {
+#battery {
     background-color: @background-alt;
-    padding: 0.4em 0.8em;
+    padding: 0.3em 0.7em;
+    border-radius: 8px;
 }
 
 #custom-fedora {
     color: @blue;
-    font-size: 2.2em;
+    font-size: 2em;
 }
 
 #workspaces button {
-    padding: 0px 0.53em;
+    padding: 0 0.53em;
     background-color: transparent;
     color: #ffffff;
 }
@@ -57,7 +61,7 @@ widget > label {
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    color: @red;
 }
 
 #mode {
@@ -69,15 +73,6 @@ widget > label {
     background-color: transparent;
 }
 
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
-}
 
 @keyframes blink {
     to {
@@ -88,8 +83,7 @@ widget > label {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: @red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
