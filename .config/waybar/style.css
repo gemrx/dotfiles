@@ -2,6 +2,7 @@
 @define-color background-alt #282c34;
 @define-color blue #4AA5F0;
 @define-color red #E05561;
+@define-color yellow #D1BA52;
 
 * {
     font-family: JetBrainsMono, 'Font Awesome 6 Pro Solid', Helvetica, Arial, sans-serif;
@@ -18,12 +19,6 @@ window#waybar {
 .modules-center,
 .modules-right {
     margin: 0.5em 0.8em;
-}
-
-/* All modules */
-widget > box, 
-widget > label {
-    color: #ffffff;
 }
 
 #workspaces,
@@ -47,12 +42,13 @@ widget > label {
     background-color: transparent;
     color: #ffffff;
 }
+
 #workspaces button.active {
     color: @blue;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0);
 }
 
 #workspaces button.focused {
@@ -62,15 +58,6 @@ widget > label {
 
 #workspaces button.urgent {
     color: @red;
-}
-
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#window {
-    background-color: transparent;
 }
 
 
@@ -122,14 +109,37 @@ label:focus {
     background-color: #f53c3c;
 }
 
+
+/* Tray Group */
+#custom-expander {
+    color: @yellow;
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+}
+#custom-expander:hover{
+    background-color: red;
+}
+#tray {
+    padding-right: 0;
+    padding-left: 0;
+}
+#tray #tray widget > * {
+    margin-right: 10px;
+}
+#tray #tray widget:first-child > * {
+    margin-left: 0.7em;
+}
+#tray #tray widget:last-child > * {
+    margin-right: 0px;
+}
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
-
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @red;
 }
+
 
 #idle_inhibitor {
     background-color: #2d3436;

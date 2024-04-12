@@ -15,7 +15,7 @@
         "clock"
     ],
     "modules-right": [
-        "tray",
+        "group/tray",
         // "mpd",
         // "idle_inhibitor",
         // "pulseaudio",
@@ -23,16 +23,19 @@
         // "power-profiles-daemon",
         // "cpu",
         // "memory",
-        "battery"
+        "battery",
         // "temperature",
         // "backlight",
-        // "keyboard-state",
+        "keyboard-state"    
         // "sway/language",
         // "battery",
         // "battery#bat2",        
     ],
     "custom/fedora": {
         "format": ""
+    },
+    "custom/expander": {
+        "format": ""
     },
     "hyprland/window": {
         "format": "{initialTitle}",
@@ -44,6 +47,19 @@
             "(.*) - zsh": " [$1]"
         }
     },
+    "group/tray": {
+
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/expander",
+            "tray"
+        ]
+    }, 
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -97,8 +113,7 @@
         }
     },
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 21
     },
     "clock": {
         "timezone": "America/Panama",
@@ -132,7 +147,7 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
+        "format-full": "",
         "format-charging": "{icon}<span foreground='#d1ba52'>󱐋</span> {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
