@@ -244,7 +244,7 @@ element-icon {
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
-    highlight:                   inherit;
+    highlight:                   none;
     cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.0;

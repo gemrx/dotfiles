@@ -2,11 +2,11 @@
 @define-color background-alt #282c34;
 @define-color blue #4AA5F0;
 @define-color red #E05561;
-@define-color yellow #D1BA52;
+@define-color yellow #DFB25D;
 
 * {
     font-family: JetBrainsMono, 'Font Awesome 6 Pro Solid', Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 window#waybar {
@@ -40,7 +40,7 @@ window#waybar {
 #workspaces button {
     padding: 0 0.53em;
     background-color: transparent;
-    color: #ffffff;
+    color: #d7dae0;
 }
 
 #workspaces button.active {
@@ -63,7 +63,7 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: #d7dae0;
         color: #000000;
     }
 }
@@ -84,12 +84,12 @@ window#waybar {
 
 #power-profiles-daemon.performance {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: #d7dae0;
 }
 
 #power-profiles-daemon.balanced {
     background-color: #2980b9;
-    color: #ffffff;
+    color: #d7dae0;
 }
 
 #power-profiles-daemon.power-saver {
