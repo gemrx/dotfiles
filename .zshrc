@@ -44,7 +44,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=none'
 ZSH_HIGHLIGHT_STYLES[default]='fg=none' 
 
 # ANTIDOTE PLUGIN MANAGER
-source $HOME/.antidote/antidote.zsh
+source /usr/share/zsh-antidote/antidote.zsh
 antidote load
 
 # NVM
